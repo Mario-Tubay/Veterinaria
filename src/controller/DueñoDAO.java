@@ -16,13 +16,17 @@ public class DueñoDAO implements CrudDueño{
     }
 
     @Override
-    public int update(Dueño t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int update(Dueño d) {
+        String sql = "UPDATE dueño SET nombre='"+d.getNombre()+"' ,correo='"+d.getCorreo()+"' , direccion='"+d.getDireccion()+"' WHERE id ='"+d.getId()+"'  ";
+        int filasAfectadas = i.updates(sql);
+        return filasAfectadas;
     }
 
     @Override
-    public int delete(Dueño t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int delete(Dueño d) {
+        String sql = "update dueño set eliminar=1 where id = '"+d.getId()+"'";
+        int filasAfectadas = i.deletes(sql);
+        return filasAfectadas;
     }
     
     public static ArrayList<String> consultaDueño(String id){
